@@ -1,0 +1,361 @@
+Ejercicio 1
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string frase = Console.ReadLine();
+        Console.WriteLine(frase.Length);
+    }
+}
+
+Ejercicio 2
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string palabra = Console.ReadLine();
+
+        Console.WriteLine(palabra.ToUpper());
+        Console.WriteLine(palabra.ToLower());
+        Console.WriteLine(palabra.Length);
+    }
+}
+
+Ejercicio 3
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string frase = Console.ReadLine();
+        int vocales = 0;
+
+        foreach (char c in frase)
+        {
+            if ("aeiouAEIOU".Contains(c))
+            {
+                vocales++;
+            }
+        }
+
+        Console.WriteLine(vocales);
+    }
+}
+
+Ejercicio 4
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            string palabra = Console.ReadLine();
+
+            Console.WriteLine(palabra[0]);
+            Console.WriteLine(palabra[palabra.Length - 1]);
+        }
+        catch
+        {
+            Console.WriteLine("Cadena vacia");
+        }
+    }
+}
+
+Ejercicio 5
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            int num1 = int.Parse(Console.ReadLine());
+            int num2 = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(num1 / num2);
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Formato incorrecto");
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("No se puede dividir por cero");
+        }
+    }
+}
+
+Ejercicio 6
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            string palabra = Console.ReadLine();
+            int posicion = int.Parse(Console.ReadLine());
+
+            Console.WriteLine(palabra[posicion]);
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Formato incorrecto");
+        }
+        catch (IndexOutOfRangeException)
+        {
+            Console.WriteLine("Posicion invalida");
+        }
+    }
+}
+
+Ejercicio 7
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string frase = Console.ReadLine();
+        string palabra = Console.ReadLine();
+
+        Console.WriteLine(frase.Contains(palabra));
+    }
+}
+
+Ejercicio 8
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            string texto = Console.ReadLine();
+            string[] numeros = texto.Split(',');
+
+            int suma = 0;
+
+            foreach (string n in numeros)
+            {
+                suma += int.Parse(n);
+            }
+
+            Console.WriteLine(suma);
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Error de conversion");
+        }
+    }
+}
+
+Ejercicio 9
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string palabra = Console.ReadLine();
+
+        for (int i = palabra.Length - 1; i >= 0; i--)
+        {
+            Console.Write(palabra[i]);
+        }
+    }
+}
+
+Ejercicio 10
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            string contraseña = Console.ReadLine();
+
+            bool numero = false;
+
+            foreach (char c in contraseña)
+            {
+                if (char.IsDigit(c))
+                {
+                    numero = true;
+                }
+            }
+
+            if (contraseña.Length < 8 || !numero)
+            {
+                throw new ArgumentException();
+            }
+
+            Console.WriteLine("Contraseña valida");
+        }
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Contraseña invalida");
+        }
+    }
+}
+
+Ejercicio 11
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            int edad = int.Parse(Console.ReadLine());
+
+            if (edad < 1 || edad > 120)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+
+            Console.WriteLine("Edad valida");
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Console.WriteLine("Edad fuera de rango");
+        }
+    }
+}
+
+Ejercicio 12
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        string texto = null;
+
+        try
+        {
+            Console.WriteLine(texto.Length);
+        }
+        catch (NullReferenceException)
+        {
+            Console.WriteLine("La variable es null");
+        }
+    }
+}
+
+Ejercicio 13
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            int num1 = int.Parse(Console.ReadLine());
+            int num2 = int.Parse(Console.ReadLine());
+
+            checked
+            {
+                int suma = num1 + num2;
+                Console.WriteLine(suma);
+            }
+        }
+        catch (OverflowException)
+        {
+            Console.WriteLine("Overflow");
+        }
+    }
+}
+
+Ejercicio 14
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        try
+        {
+            string frase = Console.ReadLine();
+
+            Console.WriteLine(frase.Length);
+
+            string[] palabras = frase.Split(' ');
+            Console.WriteLine(palabras.Length);
+
+            int vocales = 0;
+
+            foreach (char c in frase)
+            {
+                if ("aeiouAEIOU".Contains(c))
+                {
+                    vocales++;
+                }
+            }
+
+            Console.WriteLine(vocales);
+
+            int posicion = int.Parse(Console.ReadLine());
+
+            if (posicion < 0 || posicion >= frase.Length)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
+            Console.WriteLine(frase[posicion]);
+
+            int numero = int.Parse(Console.ReadLine());
+
+            if (numero < 0)
+            {
+                throw new ArgumentException();
+            }
+
+            Console.WriteLine(100 / numero);
+        }
+        catch (FormatException)
+        {
+            Console.WriteLine("Error de formato");
+        }
+        catch (IndexOutOfRangeException)
+        {
+            Console.WriteLine("Posicion invalida");
+        }
+        catch (DivideByZeroException)
+        {
+            Console.WriteLine("Division por cero");
+        }
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Argumento invalido");
+        }
+    }
+}
